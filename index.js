@@ -124,7 +124,7 @@ module.exports = function leafletImage(map, callback) {
                     tileQueue.defer(canvasTile, tile, tilePos, tileSize);
                 } else {
                     var pow = Math.pow(2, zoom + 1);
-                    tilePoint.x = (tilePoint.x + pow) % pow;
+                    tilePoint.x = (tilePoint.x % pow + pow) % pow;
                     var url = addCacheString(layer.getTileUrl(tilePoint));
                     tileQueue.defer(loadTile, url, tilePos, tileSize);
                 }
